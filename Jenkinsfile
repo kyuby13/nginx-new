@@ -19,7 +19,7 @@ pipeline {
             }
         } 
         
-        stage('Login') {
+        stage('Deploy') {
             steps {
                  sh """
                     ssh root@13.215.163.182 "docker ps | grep nginx | xargs docker stop; docker pull $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}; docker container create --name nginx${BUILD_NUMBER} -p 8787:80 $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}; docker container start nginx${BUILD_NUMBER}; docker system prune -af"
