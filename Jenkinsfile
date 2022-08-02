@@ -21,9 +21,7 @@ pipeline {
         
         stage('Login') {
             steps {
-                sh '''#!/bin/bash
-                 ssh root@13.215.163.182
-                   '''
+                sh "ssh root@13.215.163.182"
                 sh "docker pull $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
             }
         }
