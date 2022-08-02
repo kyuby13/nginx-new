@@ -24,25 +24,11 @@ pipeline {
                 sh '''#!/bin/bash
                  ssh root@13.215.163.182
                    '''
+                sh "docker pull $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
             }
         }
           
         
-         stage('Create') {
-            steps {
-                sh "docker container create --name nginx${BUILD_NUMBER} -p 8787:80 $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
-            }
-        }
-          
-        stage('Deploy') {
-            steps {
-                sh "docker container start nginx${BUILD_NUMBER}"
-            }
-        }
-         stage('Clean Workspace') {
-            steps {
-                cleanWs()
-            }
-        }        
+       
     }
 }
