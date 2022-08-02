@@ -21,9 +21,10 @@ pipeline {
         
         stage('Login') {
             steps {
-                sh "ssh root@13.215.163.182"
-                sh "docker pull $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
-            }
+                 sh """
+                    ssh root@13.215.163.182 " mkdir -p /home/testing"
+                    """
+             }
         }
           
         
