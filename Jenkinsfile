@@ -21,11 +21,9 @@ pipeline {
         
         stage('Login') {
             steps {
-                bash '''
-            #!/bin/bash
-            ssh root@13.215.163.182
-            mkdir -p /home/testing
-         '''
+                sh '''#!/bin/bash
+                 ssh root@13.215.163.182
+                   '''
             }
         }
           
