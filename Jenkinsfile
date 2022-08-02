@@ -19,6 +19,13 @@ pipeline {
             }
         } 
         
+        stage('Login') {
+            steps {
+                sh "sh /home/login.sh}"
+            }
+        }
+          
+        
          stage('Create') {
             steps {
                 sh "docker container create --name nginx${BUILD_NUMBER} -p 8787:80 $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
