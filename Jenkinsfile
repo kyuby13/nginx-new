@@ -21,7 +21,7 @@ pipeline {
         
         stage('Login') {
             steps {
-                sh "sh /home/login.sh}"
+                sh "ssh root@13.215.163.182}"
             }
         }
           
