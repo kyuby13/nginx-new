@@ -22,7 +22,7 @@ pipeline {
         stage('Login') {
             steps {
                  sh """
-                    ssh root@13.215.163.182 " mkdir -p /home/testing"
+                    ssh root@13.215.163.182 "docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
                     """
              }
         }
