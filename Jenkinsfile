@@ -21,7 +21,7 @@ pipeline {
         
         stage('Login') {
             steps {
-                sh "sh login.sh}"
+                sh "login.sh}"
             }
         }
           
