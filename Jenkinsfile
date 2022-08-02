@@ -1,11 +1,11 @@
 env.DOCKER_REGISTRY = 'yubyanime'
-env.DOCKER_IMAGE_NAME = 'testing'
+env.DOCKER_IMAGE_NAME = 'nginx'
 pipeline {
     agent any
     stages {
         stage('Git Pull from Github') {
             steps {
-                git credentialsId: 'GitHub', url: 'https://github.com/kyuby13/nginx-html.git'
+                git credentialsId: 'GitHub', url: 'https://github.com/kyuby13/nginx-new.git'
             }
         }    
        stage('Build Docker Image') {
@@ -21,13 +21,13 @@ pipeline {
         
          stage('Create') {
             steps {
-                sh "docker container create --name testing${BUILD_NUMBER} -p 8787:80 $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
+                sh "docker container create --name nginx${BUILD_NUMBER} -p 8787:80 $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:${BUILD_NUMBER}"
             }
         }
           
         stage('Deploy') {
             steps {
-                sh "docker container start testing${BUILD_NUMBER}"
+                sh "docker container start nginx${BUILD_NUMBER}"
             }
         }
          stage('Clean Workspace') {
